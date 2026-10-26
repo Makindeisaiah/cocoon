@@ -1001,3 +1001,68 @@ footer {
     transition: none !important;
   }
 }
+
+
+/* COCOON — mobile navigation layering fix */
+@media (max-width: 740px) {
+  .header {
+    /* Prevent backdrop-filter from trapping the fixed menu */
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    z-index: 1000;
+  }
+
+  .header #nav {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 30px 7%;
+
+    background: #fffbf7;
+    opacity: 1;
+    z-index: 1001;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+
+    transform: translateX(100%);
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+      transform 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .header #nav.open {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .header .menu-toggle {
+    position: relative;
+    z-index: 1002;
+    flex-shrink: 0;
+    background: #fffbf7;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+    touch-action: none;
+  }
+}
+
