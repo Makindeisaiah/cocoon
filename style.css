@@ -614,7 +614,7 @@ textarea {
   color: #f4d9cb;
 }
 .light {
-  background: var(--ivory);
+  background: #35302d;
 }
 .light:hover {
   background: var(--espresso);
